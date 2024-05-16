@@ -17,8 +17,13 @@ Console.WriteLine("Please enter how many times the Fibonacci needs to run.");
 
 string input = Console.ReadLine();
 
-while (userinput == 0)
+while (userinput <= 0)
 {
+    if (userinput < 0)
+    {
+        Console.WriteLine("The input is not a positive number. Please enter how many times the Fibonacci needs to run.");
+        input = Console.ReadLine();
+    }
     try
     {
         userinput = Convert.ToInt32(input);
@@ -28,7 +33,9 @@ while (userinput == 0)
         Console.WriteLine("The input is not a number. Please enter how many times the Fibonacci needs to run.");
         input = Console.ReadLine();
     }
+    
 }
+
 for (int i = 1; i <= userinput; i++)
 {
     int num3 = num1 + num2;
