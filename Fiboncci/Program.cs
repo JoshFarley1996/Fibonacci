@@ -1,29 +1,38 @@
-﻿using System.ComponentModel.Design;
-using System.Net.Security;
-using System.Runtime.InteropServices.Marshalling;
-using System.Xml;
+﻿//Fibbonacci:
+//1) output user selectable quantity of values starting with the value one (1)
+//2) each value after the first will be the sum of the previous two numbers
+//3) Then turn it into a list
+//3) Bonus: output 1000 without bigint
 
-int num1 = 0;
+//ex: 1, 1, 2, 3, 5, 8
+
+using System.ComponentModel.Design;
+using System.Numerics;
+
+int num1 = 1;
 int num2 = 0;
+int userinput = 0;
 
+Console.WriteLine("Please enter how many times the Fibonacci needs to run.");
 
-while (num1 <= 100)
+string input = Console.ReadLine();
+
+while (userinput == 0)
 {
-    if (num1 == 0)
+    try
     {
-        num1 += 1;
-        Console.WriteLine(num1);
+        userinput = Convert.ToInt32(input);
     }
-    else if (num2 == 0 )
+    catch (Exception)
     {
-        num2 = num1;
-        Console.WriteLine(num2);
+        Console.WriteLine("The input is not a number. Please enter how many times the Fibonacci needs to run.");
+        input = Console.ReadLine();
     }
-    else if ( num1 >0 && num2 > 0)
-    {
-        int num3 = num1 + num2;
-        Console.WriteLine(num3);
-        num1 = num2;
-        num2 = num3;
-    }    
+}
+for (int i = 1; i <= userinput; i++)
+{
+    int num3 = num1 + num2;
+    Console.WriteLine(num3);
+    num1 = num2;
+    num2 = num3;       
 }
