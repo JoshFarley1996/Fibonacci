@@ -7,27 +7,32 @@
 //ex: 1, 1, 2, 3, 5, 8
 
 using System.ComponentModel.Design;
+using System.Diagnostics.Metrics;
+using System.Globalization;
 using System.Numerics;
 
-int num1 = 1;
-int num2 = 0;
+//Give required variables a value
 int userinput = 0;
 
+//Ask user for the amount of time the code needs to be ran.
 Console.WriteLine("Please enter how many times the Fibonacci needs to run.");
-
 string input = Console.ReadLine();
 
+//Validate the users input. Cannot be a negative number or letter
 while (userinput <= 0)
 {
+    //if number is negative ask for input again
     if (userinput < 0)
     {
         Console.WriteLine("The input is not a positive number. Please enter how many times the Fibonacci needs to run.");
         input = Console.ReadLine();
     }
+    //Try to convert input to an int
     try
     {
         userinput = Convert.ToInt32(input);
     }
+    //If input is a letter code will fail and move to the exception asking the user for a new input
     catch (Exception)
     {
         Console.WriteLine("The input is not a number. Please enter how many times the Fibonacci needs to run.");
@@ -36,10 +41,17 @@ while (userinput <= 0)
     
 }
 
+//Add list 
+List<int> numbers = [1, 1];
+
+//Run the Fibonacci loop as many times as the user wants adding the final value to the list.
 for (int i = 1; i <= userinput; i++)
 {
-    int num3 = num1 + num2;
-    Console.WriteLine(num3);
-    num1 = num2;
-    num2 = num3;       
+   numbers.Add(numbers[numbers.Count - 1] + numbers[numbers.Count - 2]);
+}
+
+////Display list to user
+foreach (int number in numbers)
+{
+    Console.WriteLine(number);
 }
