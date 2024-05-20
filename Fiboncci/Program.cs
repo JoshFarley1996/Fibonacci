@@ -21,12 +21,6 @@ string input = Console.ReadLine();
 //Validate the users input. Cannot be a negative number or letter
 while (userinput <= 0)
 {
-    //if number is negative ask for input again
-    if (userinput < 0)
-    {
-        Console.WriteLine("The input is not a positive number. Please enter how many times the Fibonacci needs to run.");
-        input = Console.ReadLine();
-    }
     //Try to convert input to an int
     try
     {
@@ -38,16 +32,31 @@ while (userinput <= 0)
         Console.WriteLine("The input is not a number. Please enter how many times the Fibonacci needs to run.");
         input = Console.ReadLine();
     }
-    
+
+    //if number is negative ask for input again
+    if (userinput < 0)
+    {
+        Console.WriteLine("The input is not a positive number. Please enter how many times the Fibonacci needs to run.");
+        input = Console.ReadLine();
+    }
+
 }
 
 //Add list 
-List<int> numbers = [1, 1];
+List<int> numbers = [];
 
 //Run the Fibonacci loop as many times as the user wants adding the final value to the list.
 for (int i = 1; i <= userinput; i++)
 {
-   numbers.Add(numbers[numbers.Count - 1] + numbers[numbers.Count - 2]);
+    if(i<= 2)
+    {
+        numbers.Add(1);
+    }
+    if(i>2)
+    {
+        numbers.Add(numbers[numbers.Count - 1] + numbers[numbers.Count - 2]);
+    }
+    
 }
 
 ////Display list to user
