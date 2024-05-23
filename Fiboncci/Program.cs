@@ -1,4 +1,4 @@
-﻿//Fibbonacci:
+﻿//Fibonacci:
 //1) output user selectable quantity of values starting with the value one (1)
 //2) each value after the first will be the sum of the previous two numbers
 //3) Then turn it into a list
@@ -21,22 +21,12 @@ string input = Console.ReadLine();
 //Validate the users input. Cannot be a negative number or letter
 while (userinput <= 0)
 {
-    //Try to convert input to an int
-    try
-    {
-        userinput = Convert.ToInt32(input);
-    }
-    //If input is a letter code will fail and move to the exception asking the user for a new input
-    catch (Exception)
-    {
-        Console.WriteLine("The input is not a number. Please enter how many times the Fibonacci needs to run.");
-        input = Console.ReadLine();
-    }
-
+    int.TryParse(input, out userinput );
+    
     //if number is negative ask for input again
-    if (userinput < 0)
+    if (userinput <= 0)
     {
-        Console.WriteLine("The input is not a positive number. Please enter how many times the Fibonacci needs to run.");
+        Console.WriteLine("The input is a not valid. Please enter how many times the Fibonacci needs to run.");
         input = Console.ReadLine();
     }
 
