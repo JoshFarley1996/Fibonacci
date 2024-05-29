@@ -13,7 +13,7 @@ using System.Numerics;
 
 //Give required variables a value
 int userinput = 0;
-
+char userchar;
 //Ask user for the amount of time the code needs to be ran.
 Console.WriteLine("Please enter how many times the Fibonacci needs to run.");
 string input = Console.ReadLine();
@@ -21,13 +21,20 @@ string input = Console.ReadLine();
 //Validate the users input. Cannot be a negative number or letter
 while (userinput <= 0)
 {
-    int.TryParse(input, out userinput );
-    
-    //if number is negative ask for input again
-    if (userinput <= 0)
+    char.TryParse(input, out userchar);
+    if (userchar != null)
     {
         Console.WriteLine("The input is a not valid. Please enter how many times the Fibonacci needs to run.");
         input = Console.ReadLine();
+    }
+
+    int.TryParse(input, out userinput);
+    //if number is negative ask for input again
+    if (userinput <= 0)
+    {
+        Console.WriteLine("The input is a not a positive number. Please enter how many times the Fibonacci needs to run.");
+        input = Console.ReadLine();
+        
     }
 
 }
