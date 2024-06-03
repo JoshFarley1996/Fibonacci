@@ -13,34 +13,32 @@ using System.Numerics;
 
 //Give required variables a value
 int userinput = 0;
-char userchar;
 //Ask user for the amount of time the code needs to be ran.
 Console.WriteLine("Please enter how many times the Fibonacci needs to run.");
-string input = Console.ReadLine();
 
 //Validate the users input. Cannot be a negative number or letter
 while (userinput <= 0)
 {
-    char.TryParse(input, out userchar);
-    if (userchar != null)
-    {
-        Console.WriteLine("The input is a not valid. Please enter how many times the Fibonacci needs to run.");
-        input = Console.ReadLine();
-    }
+    //get input from the user
+    string input = Console.ReadLine();
 
-    int.TryParse(input, out userinput);
-    //if number is negative ask for input again
-    if (userinput <= 0)
+    //validate if (1 the input is a number (2 is that number positive
+    if (!int.TryParse(input, out userinput))
     {
-        Console.WriteLine("The input is a not a positive number. Please enter how many times the Fibonacci needs to run.");
-        input = Console.ReadLine();
-        
+    Console.WriteLine("The input is a not valid. Please enter how many times the Fibonacci needs to run.");        
     }
-
+    else if (userinput < 0)
+    {
+    Console.WriteLine("The input is a not a positive number. Please enter how many times the Fibonacci needs to run.");    
+    }
+    else
+    {
+        break;
+    }
 }
 
-//Add list 
-List<int> numbers = [];
+    //Add list 
+    List<int> numbers = [];
 
 //Run the Fibonacci loop as many times as the user wants adding the final value to the list.
 for (int i = 1; i <= userinput; i++)
